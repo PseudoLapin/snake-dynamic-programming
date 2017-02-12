@@ -10,7 +10,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
-gctr = 0
 
 DIRECTIONS = namedtuple('DIRECTIONS',
         ['Up', 'Down', 'Left', 'Right'])(0, 1, 2, 3)
@@ -206,7 +205,7 @@ def one_player(screen):
     spots[0][0] = 1
     food = find_food(spots)
     spots = update_board(screen, [snake], food)
-    gctr = 0
+
     while True:
         clock.tick(100)
         # Event processing
@@ -220,8 +219,7 @@ def one_player(screen):
         if done:
             return False
 
-        snake.nextDir.appendleft(iterativePolicyEvaluation(gctr, spots, snake.deque[-1]))
-        gctr += 1
+        snake.nextDir.appendleft(iterativePolicyEvaluation(spots, snake.deque[-1]))
 
         # Game logic
         next_head = move(snake)
@@ -506,7 +504,7 @@ def getActionResults(states, sourcePoint, action):
 
     return [(targetPoint, reward, 1)]
 
-def iterativePolicyEvaluation(gctr, states, snakePoint):
+def iterativePolicyEvaluation(states, snakePoint):
     values = [ [ ] ]
 
     for j in range(len(states[0]) + 2):
