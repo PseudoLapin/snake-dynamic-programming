@@ -21,7 +21,7 @@ The way I decided to model the rewards is like so:
  - Any action that results in a blocked state (either edge of the screen or the snake itself) is not possible from the standpoint of the algorithm.
  - The only reward available throughout the grid is the action the results in the food being eaten.
  - Walls and the snake body parts have a static value function of -1. The food has a very large value equal to its reward value.
- - Policy evaluation is applied 30 times before each movement of the snake. The action that then results in the highest expected reward from the current state is chosen.
+ - Policy evaluation is applied 50 times before each movement of the snake. The action that then results in the highest expected reward from the current state is chosen.
 
 ## Observations
 

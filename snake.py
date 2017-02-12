@@ -523,8 +523,6 @@ def iterativePolicyEvaluation(gctr, states, snakePoint):
         values[-1].append(0)
 
     for k in range(50):
-        # delta = 0
-
         for i in range(len(states)):
             for j in range(len(states[i])):
                 state = states[i][j]
@@ -533,7 +531,6 @@ def iterativePolicyEvaluation(gctr, states, snakePoint):
                 if isTerminalState(state):
                     continue
 
-                v = values[i + 1][j + 1]
                 actions = getStateActions(states, point)
                 newValue = 0
 
